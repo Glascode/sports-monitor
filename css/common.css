@@ -32,12 +32,22 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400 !important;
 }
 
+/* Header */
+
 .header {
     color: #fff;
     background-color: var(--mdc-theme-primary);
 }
 
-.header h1 {
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    font-family: 'Google Sans', Roboto, sans-serif;
+}
+
+.header-item {
     margin: 0;
 }
 
@@ -45,6 +55,21 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
     text-decoration: none;
 }
+
+/* Content */
+
+.content {
+    background-color: var(--mdc-theme-primary);
+}
+
+.page {
+    padding: 3rem;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    background-color: #fff;
+}
+
+/* Footer */
 
 .footer {
     flex-shrink: 0;

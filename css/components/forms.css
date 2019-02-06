@@ -1,0 +1,15 @@
+.mdc-text-field {
+    height: 36px;
+}
+
+.mdc-text-field--outlined .mdc-floating-label {
+    top: 9px;
+}
+
+.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+    transform: translateY(-88%) scale(0.75);
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: var(--mdc-theme-primary);
+}

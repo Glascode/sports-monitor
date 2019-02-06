@@ -20,7 +20,7 @@ class View {
     }
 
     public function makeLoginPage() {
-        $this->pageTitle = 'Login';
+        $this->pageTitle = 'Sign up or Sign in';
         $this->page = 'login';
     }
 
