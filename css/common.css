@@ -1,5 +1,5 @@
 :root {
-    --mdc-theme-primary: #1a73e8;
+    --primary: #1a73e8;
 }
 
 *, *::before, *::after {
@@ -21,6 +21,7 @@ body {
     font-family: Roboto, sans-serif;
     font-weight: 400;
     line-height: 1.5;
+    background-color: #fff;
 }
 
 .master {
@@ -29,14 +30,13 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Google Sans', Roboto, sans-serif;
-    font-weight: 400 !important;
 }
 
 /* Header */
 
 .header {
     color: #fff;
-    background-color: var(--mdc-theme-primary);
+    background-color: var(--primary);
 }
 
 .header-inner {
@@ -51,7 +51,8 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-.header-link {
+.header-link,
+.header-link:hover {
     color: #fff;
     text-decoration: none;
 }

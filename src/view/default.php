@@ -15,9 +15,7 @@
 
 <?php include __DIR__ . '/partials/footer.html'; ?>
 
-<script type="text/javascript"
-        src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
+<?php include __DIR__ . '/partials/scripts.html'; ?>
 </body>
 
 </html>

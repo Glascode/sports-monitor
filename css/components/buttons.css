@@ -1,7 +1,17 @@
-.mdc-button {
+.btn {
     font-family: 'Google Sans', Roboto, sans-serif;
-    font-weight: 700;
-    text-transform: initial;
-    letter-spacing: 0;
     font-size: 1rem;
+    text-transform: initial;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #1a73e8 !important;
+    border-color: #1a73e8 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #1666cb !important;
+    border-color: #1666cb !important;
 }
