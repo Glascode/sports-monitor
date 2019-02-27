@@ -14,23 +14,23 @@ class View {
         include __DIR__ . '/default.php';
     }
 
-    public function makeHomePage() {
-        $this->pageTitle = 'Home';
-        $this->page = 'home';
+    public function makePage($page) {
+        $this->page = $page;
     }
 
-    public function makeLoginPage() {
-        $this->pageTitle = 'Sign up or Sign in';
-        $this->page = 'login';
+    public function makePageWithFeedback($page, $message) {
+        $this->page = $page;
+        $this->message = $message;
     }
 
-    public function makeRegisterPage() {
-        $this->pageTitle = 'Register';
-        $this->page = 'register';
+    public function makeNotFoundPage() {
+        $this->pageTitle = 'Error 404';
+        $this->error = 'The page you\'re looking for was not found.';
+        $this->page = 'error';
     }
 
     public function makeUnexpectedErrorPage($error) {
-        $this->pageTitle = 'Error';
+        $this->pageTitle = 'Unexpected error';
         $this->error = $error;
         $this->page = 'error';
     }

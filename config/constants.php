@@ -1,13 +1,21 @@
 <?php
 
-// MySQL server config
-define('DB_HOST', '127.0.0.1');
+// Site
+define('SITE_TITLE', 'Sports Monitor');
+define('BASE_URL', '');
 
-// Credentials
-define('DB_NAME', '');
-define('DB_USER', 'root');
-define('DB_PASSWORD', 'root');
+// Login
+define('LOGIN_FAIL', 'Le nom d\'utilisateur et le mot de passe ne correspondent pas.');
 
-// DSN
-define('PDO_DSN', 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME
-    . ';user=' . DB_USER . ';password=' . DB_PASSWORD . ';charset=utf8');
+// Password validation
+define('PASSWORD_TOO_SHORT', 'Le mot de passe doit contenir au moins 8 caractères.');
+define('PASSWORD_MISSING', 'Vous devez fournir un mot passe.');
+
+// Username validation
+define('USERNAME_EXISTS', 'Le nom d\'utilisateur existe déjà.');
+define('USERNAME_NOT_EXISTS', 'Ce nom d\'utilisateur n\'existe pas.');
+define('USERNAME_NOT_APPROVED', 'That username is not approved.');
+define('USERNAME_MISSING', 'Vous devez fournir un nom d\'utilisateur.');
+define('USERNAME_TOO_SHORT', 'Le nom d\'utilisateur doit contenir au moins 3 caractères.');
+define('USERNAME_TOO_LONG', 'Le nom d\'utilisateur ne doit pas dépasser 50 caractères.');
+define('USERNAME_CONTAINS_DISALLOWED', 'Votre nom d\'utilisateur ne peut pas contenir des caractères spéciaux.');

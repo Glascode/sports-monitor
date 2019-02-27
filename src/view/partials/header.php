@@ -1,10 +1,10 @@
 <header class="header">
     <div class="header-inner">
-        <h1 class="header-item">
+        <h2 class="header-item">
             <a class="header-link" href="/">Sports Monitor</a>
-        </h1>
-        <h3 class="header-item">
+        </h2>
+        <h5 class="header-item">
             <a class="header-link" href="/login">Login</a>
-        </h3>
+        </h5>
     </div>
 </header>

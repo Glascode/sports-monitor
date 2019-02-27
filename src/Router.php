@@ -8,20 +8,26 @@ class Router {
 
     private $view;
     private $session;
+    private $userStorage;
 
     public function main() {
 
         $this->view = new View($this);
         $this->session = new Session('AUTHENTICATION');
+        $this->userStorage = new UserStorageSQL();
 
         try {
-            switch (getUri()) {
+            switch (get_uri()) {
+                case '':
+                    $this->view->makePage('index');
+                    break;
                 case 'login':
-                    $controller = new Controller($this->view, $this->session);
-                    $controller->login();
+                    $controller = new LoginController($this->view, $this->session, $this->userStorage);
+                    $method = get_method();
+                    $controller->$method();
                     break;
                 default:
-                    $this->view->makeHomePage();
+                    $this->view->makeNotFoundPage();
                     break;
             }
         } catch (Exception $e) {

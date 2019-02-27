@@ -1,15 +1,5 @@
 <?php
 
-
-/**
- * Session Class
- *
- * Determine and modify the state of user authentication.
- *
- * The Session class is used to check the state of a user's authentication.
- * It uses the PHP session superglobal to determine if a user is logged in or
- * not.
- */
 class Session {
 
     /**
