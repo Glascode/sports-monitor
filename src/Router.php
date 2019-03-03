@@ -1,7 +1,10 @@
 <?php
 
 require_once __DIR__ . '/controller/Controller.php';
+require_once __DIR__ . '/controller/LoginController.php';
+require_once __DIR__ . '/controller/SelectTeamController.php';
 require_once __DIR__ . '/models/Session.php';
+require_once __DIR__ . '/models/UserStorageSQL.php';
 require_once __DIR__ . '/view/View.php';
 
 class Router {
@@ -23,6 +26,11 @@ class Router {
                     break;
                 case 'login':
                     $controller = new LoginController($this->view, $this->session, $this->userStorage);
+                    $method = get_method();
+                    $controller->$method();
+                    break;
+                case 'select-team':
+                    $controller = new SelectTeamController($this->view, $this->session, $this->userStorage);
                     $method = get_method();
                     $controller->$method();
                     break;

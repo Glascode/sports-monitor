@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Database Class
- *
- * Initiates connection to the database and simplify PDO functions.
- *
- * The Database class will be initialized with the credentials
- * of the SQL database, and will create a new PDO instance. The
- * rest of the model classes will access it by extending the Model class,
- * as $this->database.
- */
 class Database {
 
     private $user = DB_USER;

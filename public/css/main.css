@@ -3,5 +3,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
 
 @import 'common.css';
-@import 'components/buttons.css';
-@import 'components/forms.css';
+@import 'custom.css';

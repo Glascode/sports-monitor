@@ -1,6 +1,8 @@
-# IDE files
-.idea
-
-# System files
+# System
 .DS_Store
 
+# IDE
+.idea
+
+# Misc
+access.php

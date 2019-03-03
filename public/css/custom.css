@@ -1,0 +1,48 @@
+/* Buttons */
+
+.btn {
+    font-family: 'Google Sans', Roboto, sans-serif;
+    font-size: 1rem;
+    text-transform: initial;
+    border-radius: 4px;
+}
+
+.btn.btn-primary,
+.btn.btn-primary:hover {
+    color: var(--primary);
+}
+
+.btn.btn-raised.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.btn.btn-raised.btn-primary.active, .btn.btn-raised.btn-primary:active,
+.btn.btn-raised.btn-primary:focus, .btn.btn-raised.btn-primary:hover {
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+}
+
+/* Forms */
+
+.is-focused [class*=" bmd-label"],
+.is-focused [class^=bmd-label] {
+    color: var(--primary);
+}
+
+.custom-file-control,
+.form-control,
+.is-focused .custom-file-control,
+.is-focused .form-control {
+    background-image: linear-gradient(0deg, var(--primary) 2px, rgba(0, 150, 136, 0) 0),
+    linear-gradient(0deg, rgba(0, 0, 0, .26) 1px, transparent 0);
+}
+
+.custom-select {
+    border-radius: 4px;
+}
+
+.custom-select:focus {
+    border-color: var(--primary);
+    box-shadow: none;
+}

@@ -8,7 +8,7 @@ class LoginController extends Controller {
 
     public function get() {
         if ($this->session->isUserLoggedIn()) {
-            $this->redirect('index');
+            $this->redirect('/');
         }
 
         $this->view->makePage('login');
@@ -35,6 +35,7 @@ class LoginController extends Controller {
                 // Log in user
                 $this->session->login($user);
                 $this->message = 'Proceed';
+                $this->redirect('/select');
             } else {
                 $this->message = LOGIN_FAIL;
             }
