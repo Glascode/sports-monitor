@@ -23,6 +23,11 @@ class View {
         $this->message = $message;
     }
 
+    public function makeTrendsPage(array $responseArray) {
+        $this->page = 'trends';
+        $this->tweets = $responseArray['statuses'];
+    }
+
     public function makeNotFoundPage() {
         $this->pageTitle = 'Error 404';
         $this->error = 'The page you\'re looking for was not found.';

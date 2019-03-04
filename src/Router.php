@@ -3,7 +3,9 @@
 require_once __DIR__ . '/controller/Controller.php';
 require_once __DIR__ . '/controller/LoginController.php';
 require_once __DIR__ . '/controller/SelectTeamController.php';
+require_once __DIR__ . '/controller/TwitterTrendsController.php';
 require_once __DIR__ . '/models/Session.php';
+require_once __DIR__ . '/models/TwitterAPIExchange.php';
 require_once __DIR__ . '/models/UserStorageSQL.php';
 require_once __DIR__ . '/view/View.php';
 
@@ -32,7 +34,19 @@ class Router {
                 case 'select-team':
                     $controller = new SelectTeamController($this->view, $this->session, $this->userStorage);
                     $method = get_method();
-                    $controller->$method();
+                    $controller->get();
+                    break;
+                case 'trends':
+                    $settings = array(
+                        'oauth_access_token' => ACCESS_TOKEN,
+                        'oauth_access_token_secret' => ACCESS_TOKEN_SECRET,
+                        'consumer_key' => CONSUMER_KEY,
+                        'consumer_secret' => CONSUMER_SECRET
+                    );
+                    $controller = new TwitterTrendsController($this->view,
+                        $this->session, $this->userStorage,
+                        new TwitterAPIExchange($settings));
+                    $controller->get();
                     break;
                 default:
                     $this->view->makeNotFoundPage();
