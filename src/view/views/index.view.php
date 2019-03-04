@@ -1,5 +1,1 @@
-<h1><?= $this->pageTitle ?></h1>
-
-<p>Welcome.</p>
-
-
+<h1 class="title-lg">Visualise your<br>favourite sports</h1>

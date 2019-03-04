@@ -6,8 +6,20 @@ class View {
     private $pageTitle;
     private $page;
 
+    public $menu;
+
     public function __construct(Router $router) {
         $this->router = $router;
+        $this->menu = [
+            'trends' => [
+                'title' => 'Twitter trends',
+                'url' => '/trends'
+            ],
+            'login' => [
+                'title' => 'Login',
+                'url' => '/login'
+            ]
+        ];
     }
 
     public function render() {
