@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/controller/Controller.php';
+require_once __DIR__ . '/controller/FeedController.php';
 require_once __DIR__ . '/controller/LoginController.php';
 require_once __DIR__ . '/controller/SelectTeamController.php';
 require_once __DIR__ . '/controller/TwitterTrendsController.php';
@@ -36,6 +37,10 @@ class Router {
                     $method = get_method();
                     $controller->get();
                     break;
+                case 'feed':
+                    $controller = new FeedController($this->view, $this->session, $this->userStorage);
+                    $controller->get();
+                    break;
                 case 'trends':
                     $settings = array(
                         'oauth_access_token' => ACCESS_TOKEN,
@@ -44,8 +49,7 @@ class Router {
                         'consumer_secret' => CONSUMER_SECRET
                     );
                     $controller = new TwitterTrendsController($this->view,
-                        $this->session, $this->userStorage,
-                        new TwitterAPIExchange($settings));
+                        $this->session, $this->userStorage, new TwitterAPIExchange($settings));
                     $controller->get();
                     break;
                 default:

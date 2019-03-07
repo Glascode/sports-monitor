@@ -16,7 +16,7 @@ class TwitterTrendsController extends Controller {
 
     public function get() {
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
-        $getfield = '?q=neymar&result_type=popular&lang=en';
+        $getfield = '?q=football&result_type=popular&lang=en';
         $jsonResponse = $this->twitterAPI
             ->setGetfield($getfield)
             ->buildOauth($url, 'GET')
@@ -24,7 +24,7 @@ class TwitterTrendsController extends Controller {
 
         $responseArray = json_decode($jsonResponse, true);
 
-        $this->view->makeTrendsPage($responseArray);
+        $this->view->makeTwitterTrendsPage($responseArray);
     }
 
 }

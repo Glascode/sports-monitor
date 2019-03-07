@@ -11,6 +11,10 @@ class View {
     public function __construct(Router $router) {
         $this->router = $router;
         $this->menu = [
+            'lequipe' => [
+                'title' => 'Feed',
+                'url' => '/feed'
+            ],
             'trends' => [
                 'title' => 'Twitter trends',
                 'url' => '/trends'
@@ -35,7 +39,12 @@ class View {
         $this->message = $message;
     }
 
-    public function makeTrendsPage(array $responseArray) {
+    public function makeFeedPage(array $responseArray) {
+        $this->page = 'feed';
+        $this->feed = $responseArray['channel']['item'];
+    }
+
+    public function makeTwitterTrendsPage(array $responseArray) {
         $this->page = 'trends';
         $this->tweets = $responseArray['statuses'];
     }
