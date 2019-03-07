@@ -7,9 +7,7 @@
     <?php include __DIR__ . '/partials/header.php'; ?>
 
     <main class="content">
-        <div class="page">
-            <?php include __DIR__ . '/views/' . $this->page . '.view.php'; ?>
-        </div>
+        <?php include __DIR__ . '/views/' . $this->page . '.view.php'; ?>
     </main>
 </div>
 

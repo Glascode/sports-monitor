@@ -41,7 +41,7 @@ class View {
 
     public function makeFeedPage(array $responseArray) {
         $this->page = 'feed';
-        $this->feed = $responseArray['channel']['item'];
+        $this->feed = $responseArray['channel'];
     }
 
     public function makeTwitterTrendsPage(array $responseArray) {
@@ -59,6 +59,19 @@ class View {
         $this->pageTitle = 'Unexpected error';
         $this->error = $error;
         $this->page = 'error';
+    }
+
+    public function formatPublishedTime($time) {
+        date_default_timezone_set('Europe/Paris');
+        $published_time_interval = (time() - $time) / 60;
+
+        if ($published_time_interval > 60) {
+            $lapse = round($published_time_interval / 60);
+            return $lapse . ' hour' . ($lapse > 1 ? 's' : '') . ' ago';
+        }
+        $lapse = round($published_time_interval);
+        return $lapse . ' minute' . ($lapse > 1 ? 's' : '') . ' ago';
+
     }
 
 }

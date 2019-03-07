@@ -8,7 +8,7 @@
 }
 
 html {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 html, body {
@@ -27,10 +27,6 @@ body {
 
 .master {
     flex: 1 0 auto;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Google Sans', Roboto, sans-serif;
 }
 
 a {
@@ -93,12 +89,14 @@ a:hover {
 
 /* Content */
 
-.page {
-    padding: 5rem 7rem;
+.google-sans {
+    font-family: 'Google Sans', Roboto, sans-serif;
 }
 
-.title-lg {
-    font-size: 4rem;
+.rss-item-img {
+    width: 160px;
+    height: 90px;
+    border-radius: 4px;
 }
 
 /* Footer */
@@ -109,7 +107,8 @@ a:hover {
 
 /* PHP errors tables */
 
-.xdebug-error, .xe-notice {
+.xdebug-var-dump, .xdebug-error, .xe-notice {
+    min-height: 100px;
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
     DejaVu Sans Mono, Courier New, monospace;
     font-size: .8rem;
