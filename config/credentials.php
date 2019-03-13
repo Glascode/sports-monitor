@@ -4,7 +4,7 @@
 define('DB_HOST', '127.0.0.1');
 
 // Credentials
-define('DB_NAME', '');
+define('DB_NAME', 'sports_monitor');
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'root');
 
