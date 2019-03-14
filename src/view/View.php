@@ -20,10 +20,7 @@ class View {
                 'url' => '/trends'
             ]
         ];
-        $this->loginButton = [
-            'title' => 'Login',
-            'url' => '/login'
-        ];
+        $this->me = 'Login';
     }
 
     public function render() {

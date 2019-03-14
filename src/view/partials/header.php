@@ -16,7 +16,7 @@
         <div class="dropdown">
             <button class="header-nav-link btn btn-primary dropdown-toggle"
                     type="button" data-toggle="dropdown">
-                johndoe
+                <?= $this->me ?>
             </button>
             <div class="dropdown-menu"> <!-- form -->
                 <a class="dropdown-item" href="/profile">Profile</a>

@@ -16,6 +16,7 @@ class PrivateView extends View {
                 'url' => '/trends'
             ]
         ];
+        $this->me = 'USERNAME';
     }
 
 }
