@@ -99,6 +99,14 @@ a:hover {
 
 /* Content */
 
+.container-sm {
+    max-width: 450px;
+}
+
+.message {
+    white-space: pre-wrap;
+}
+
 .rss-item-img {
     width: 160px;
     height: 90px;

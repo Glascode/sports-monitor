@@ -28,7 +28,9 @@ class Router {
         $this->session = new Session('SPORTS_MONITOR');
 
         if ($this->session->isUserLoggedIn()) {
-            $this->view = new PrivateView($this);
+            $userId = $this->session->getSessionValue('user_id');
+            $user = $this->userStorage->getUser($userId);
+            $this->view = new PrivateView($this, $user);
         } else {
             $this->view = new View($this);
         }

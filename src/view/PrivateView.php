@@ -4,8 +4,11 @@ require_once __DIR__ . '/View.php';
 
 class PrivateView extends View {
 
-    public function __construct(Router $router) {
+    public $user;
+
+    public function __construct(Router $router, $user) {
         parent::__construct($router);
+        $this->user = $user;
         $this->menu = [
             'lequipe' => [
                 'title' => 'Feed',
@@ -16,7 +19,7 @@ class PrivateView extends View {
                 'url' => '/trends'
             ]
         ];
-        $this->me = 'USERNAME';
+        $this->me = $this->user['username'];
     }
 
 }

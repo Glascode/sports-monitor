@@ -18,7 +18,7 @@
                     type="button" data-toggle="dropdown">
                 <?= $this->me ?>
             </button>
-            <div class="dropdown-menu"> <!-- form -->
+            <div class="dropdown-menu">
                 <a class="dropdown-item" href="/profile">Profile</a>
                 <a class="dropdown-item" href="/logout">Logout</a>
             </div>

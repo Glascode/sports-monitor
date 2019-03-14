@@ -1,4 +1,4 @@
-<div class="frame m-auto p-5">
+<div class="container-sm w-100 frame m-auto p-5">
     <h1 class="text-center mb-5">Log in</h1>
     <?php include __DIR__ . '/../partials/message.php' ?>
     <form method="POST">
