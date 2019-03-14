@@ -11,7 +11,9 @@ class LoginController extends Controller {
             $this->redirect('/');
         }
 
+        $this->view->style = true;
         $this->view->makePage('login');
+
     }
 
     public function post() {

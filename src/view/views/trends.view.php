@@ -3,21 +3,26 @@
         width: 1.3rem;
         height: 1.3rem;
     }
+
+    .tweet-card pre {
+        font-family: inherit;
+        font-size: 100%;
+        white-space: pre-wrap;
+    }
 </style>
 
-<div style="max-width: 800px; margin: auto; padding: 5rem;">
+<div style="max-width: 800px; margin: auto;">
     <h2 class="mb-5 google-sans">Twitter trends</h2>
     <div class="mb-4 text-secondary text-uppercase">Popular Tweets</div>
 
     <div>
-        <?php //var_dump($this->tweets) ?>
         <?php foreach ($this->tweets as $tweet): ?>
-            <div class="card mb-4 p-3">
+            <a class="card tweet-card mb-4 p-3" target="_blank">
                 <div class="mb-1">
                     <span class="font-weight-bold"><?= $tweet['user']['name'] ?></span>
                     <span class="text-muted">@<?= $tweet['user']['screen_name'] ?></span>
                 </div>
-                <p><?= $tweet['full_text'] ?></p>
+                <pre class="w-100"><?= $tweet['full_text'] ?></pre>
                 <div class="d-flex">
                     <span class="d-flex align-items-center mr-4">
                         <svg class="tweet-icon retweet-icon mr-2">
@@ -32,8 +37,9 @@
                         <?= $tweet['favorite_count'] ?>
                     </span>
                 </div>
-            </div>
+            </a>
         <?php endforeach ?>
+        <?php var_dump($this->tweets) ?>
     </div>
 </div>
 
