@@ -9,6 +9,7 @@ require_once __DIR__ . '/models/Session.php';
 require_once __DIR__ . '/models/TwitterAPIExchange.php';
 require_once __DIR__ . '/models/UserStorageSQL.php';
 require_once __DIR__ . '/view/View.php';
+require_once __DIR__ . '/view/PrivateView.php';
 
 class Router {
 
@@ -18,9 +19,14 @@ class Router {
 
     public function main() {
 
-        $this->view = new View($this);
-        $this->session = new Session('AUTHENTICATION');
         $this->userStorage = new UserStorageSQL();
+        $this->session = new Session('SPORTS_MONITOR');
+
+        if ($this->session->isUserLoggedIn()) {
+            $this->view = new PrivateView($this);
+        } else {
+            $this->view = new View($this);
+        }
 
         try {
             switch (get_uri()) {

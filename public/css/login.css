@@ -1,0 +1,14 @@
+@import 'main.css';
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.frame {
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+}

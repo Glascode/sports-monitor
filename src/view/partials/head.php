@@ -17,6 +17,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
 
-    <!-- Custom styles -->
-    <link href="/css/main.css" rel="stylesheet">
+    <?php if (isset($this->style)): ?>
+        <!-- Specific page style -->
+        <link href="/css/<?= $this->page ?>.css" rel="stylesheet">
+    <?php else: ?>
+        <!-- Main style -->
+        <link href="/css/main.css" rel="stylesheet">
+    <?php endif; ?>
 </head>

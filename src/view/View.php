@@ -2,9 +2,9 @@
 
 class View {
 
-    private $router;
-    private $pageTitle;
-    private $page;
+    protected $router;
+    protected $pageTitle;
+    protected $page;
 
     public $menu;
 
@@ -18,11 +18,11 @@ class View {
             'trends' => [
                 'title' => 'Twitter trends',
                 'url' => '/trends'
-            ],
-            'login' => [
-                'title' => 'Login',
-                'url' => '/login'
             ]
+        ];
+        $this->menuProfile = [
+            'title' => 'Login',
+            'url' => '/login'
         ];
     }
 

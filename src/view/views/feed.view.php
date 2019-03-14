@@ -8,7 +8,7 @@
         </ul>
     </aside>
 
-    <article style="max-width: 800px; padding: 5rem;">
+    <article style="max-width: 800px;">
         <h2 class="mb-5 google-sans"><?= $this->feed['title'] ?></h2>
         <div class="mb-4 text-secondary text-uppercase">Today</div>
 
