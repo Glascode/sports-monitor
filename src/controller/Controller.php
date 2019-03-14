@@ -6,9 +6,7 @@ abstract class Controller {
     protected $session;
     protected $userStorage;
 
-    public function __construct(View $view,
-                                Session $session,
-                                UserStorageSQL $userStorage) {
+    public function __construct(View $view, Session $session, UserStorageSQL $userStorage) {
         $this->view = $view;
         $this->session = $session;
         $this->userStorage = $userStorage;

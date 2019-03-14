@@ -14,11 +14,11 @@ class PrivateView extends View {
             'trends' => [
                 'title' => 'Twitter trends',
                 'url' => '/trends'
+            ],
+            'profile' => [
+                'title' => 'Profile',
+                'url' => '/profile'
             ]
-        ];
-        $this->menuProfile = [
-            'title' => 'Login',
-            'url' => '/login'
         ];
     }
 
