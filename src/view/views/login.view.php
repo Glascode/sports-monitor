@@ -1,5 +1,5 @@
 <div class="frame m-auto p-5">
-    <h1 class="text-center">Sign in</h1>
+    <h1 class="text-center">Log in / Register</h1>
 
     <div> <!-- form -->
         <div class="form-group">
