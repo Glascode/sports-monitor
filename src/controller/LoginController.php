@@ -11,9 +11,8 @@ class LoginController extends Controller {
             $this->redirect('/');
         }
 
-        $this->view->style = true;
+        $this->view->style = 'login';
         $this->view->makePage('login');
-
     }
 
     public function post() {
@@ -27,23 +26,20 @@ class LoginController extends Controller {
 
         if (!$user) {
             // Could not find a user with that username
-            // TODO: Handle message
             $this->message = USERNAME_NOT_EXISTS;
         } else {
             // User account found
             $correctPassword = $this->verifyPassword($password, $user['password']);
-
             if ($correctPassword) {
-                // Log in user
                 $this->session->login($user);
-                $this->message = 'Proceed';
-                $this->redirect('/select');
+                $this->redirect('/login');
             } else {
                 $this->message = LOGIN_FAIL;
             }
         }
 
-        $this->view->makePageWithFeedback('login', $this->message);
+        $this->view->style = 'login';
+        $this->view->makePage('login')->withMessage($this->message);
 
     }
 

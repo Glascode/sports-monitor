@@ -16,7 +16,7 @@
 
     <?php if (isset($this->style)): ?>
         <!-- Specific page style -->
-        <link href="/css/<?= $this->page ?>.css" rel="stylesheet">
+        <link href="/css/<?= $this->style ?>.css" rel="stylesheet">
     <?php else: ?>
         <!-- Main style -->
         <link href="/css/main.css" rel="stylesheet">

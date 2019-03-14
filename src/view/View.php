@@ -20,7 +20,7 @@ class View {
                 'url' => '/trends'
             ]
         ];
-        $this->menuProfile = [
+        $this->loginButton = [
             'title' => 'Login',
             'url' => '/login'
         ];
@@ -32,11 +32,7 @@ class View {
 
     public function makePage($page) {
         $this->page = $page;
-    }
-
-    public function makePageWithFeedback($page, $message) {
-        $this->page = $page;
-        $this->message = $message;
+        return $this;
     }
 
     public function makeFeedPage(array $responseArray) {
@@ -61,6 +57,16 @@ class View {
         $this->page = 'error';
     }
 
+    public function withTitle($title) {
+        $this->pageTitle = $title;
+        return $this;
+    }
+
+    public function withMessage($message) {
+        $this->message = $message;
+        return $this;
+    }
+
     public function formatPublishedTime($time) {
         date_default_timezone_set('Europe/Paris');
         $published_time_interval = (time() - $time) / 60;
@@ -71,7 +77,6 @@ class View {
         }
         $lapse = round($published_time_interval);
         return $lapse . ' minute' . ($lapse > 1 ? 's' : '') . ' ago';
-
     }
 
 }

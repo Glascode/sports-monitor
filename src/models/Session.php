@@ -15,15 +15,15 @@ class Session {
     /**
      * Sets the user ID session.
      */
-    public function login($userLogin) {
-        $_SESSION['user_login'] = $userLogin;
+    public function login($user) {
+        $_SESSION['user_id'] = $user['id'];
     }
 
     /**
      * Unsets the session variable and destroy the session.
      */
     public function logout() {
-        unset($_SESSION['user_login']);
+        unset($_SESSION['user_id']);
         session_destroy();
     }
 
@@ -31,8 +31,8 @@ class Session {
      * Determines if user is logged in, and redirect to the login screen
      * if not.
      */
-    public function authenticate($userLogin) {
-        if (!key_exists('user_login', $_SESSION) || $userLogin !== $_SESSION['user_login']) {
+    public function authenticate($userId) {
+        if (!key_exists('user_id', $_SESSION) || $userId !== $_SESSION['user_id']) {
             header('Location: /login');
         }
     }
@@ -41,7 +41,7 @@ class Session {
      * Returns true if user is logged in.
      */
     public function isUserLoggedIn() {
-        return key_exists('user_login', $_SESSION);
+        return key_exists('user_id', $_SESSION);
     }
 
     /**

@@ -17,6 +17,7 @@ class TwitterTrendsController extends Controller {
     public function get() {
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
         $getfield = '?q=%23football&result_type=popular&lang=en&tweet_mode=extended';
+
         $jsonResponse = $this->twitterAPI
             ->setGetfield($getfield)
             ->buildOauth($url, 'GET')

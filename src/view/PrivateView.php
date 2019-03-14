@@ -14,10 +14,6 @@ class PrivateView extends View {
             'trends' => [
                 'title' => 'Twitter trends',
                 'url' => '/trends'
-            ],
-            'profile' => [
-                'title' => 'Profile',
-                'url' => '/profile'
             ]
         ];
     }

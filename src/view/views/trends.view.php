@@ -4,9 +4,8 @@
         height: 1.3rem;
     }
 
-    .tweet-card pre {
-        font-family: inherit;
-        font-size: 100%;
+    .tweet-card p {
+        font-size: 1rem;
         white-space: pre-wrap;
     }
 </style>
@@ -19,10 +18,10 @@
         <?php foreach ($this->tweets as $tweet): ?>
             <a class="card tweet-card mb-4 p-3" target="_blank">
                 <div class="mb-1">
-                    <span class="font-weight-bold"><?= $tweet['user']['name'] ?></span>
-                    <span class="text-muted">@<?= $tweet['user']['screen_name'] ?></span>
+                    <h5 class="font-weight-bold"><?= $tweet['user']['name'] ?></h5>
+                    <h6 class="font-weight-normal text-muted">@<?= $tweet['user']['screen_name'] ?></h6>
                 </div>
-                <pre class="w-100"><?= $tweet['full_text'] ?></pre>
+                <p class="w-100"><?= $tweet['full_text'] ?></p>
                 <div class="d-flex">
                     <span class="d-flex align-items-center mr-4">
                         <svg class="tweet-icon retweet-icon mr-2">
@@ -39,7 +38,6 @@
                 </div>
             </a>
         <?php endforeach ?>
-        <?php var_dump($this->tweets) ?>
     </div>
 </div>
 

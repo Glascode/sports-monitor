@@ -1,5 +1,5 @@
 <div class="frame m-auto p-5">
-    <h1 class="text-center mb-5">Log in</h1>
+    <h1 class="text-center mb-5">Register</h1>
     <?php include __DIR__ . '/../partials/message.php' ?>
     <form method="POST">
         <div class="form-group">
@@ -12,12 +12,12 @@
                    id="password">
         </div>
         <div class="d-flex justify-content-between">
-            <a class="btn btn-primary" href="/register"
+            <a class="btn btn-primary" href="/login"
                style="margin-left: -14px;">
-                Create profile
+                Login instead
             </a>
             <button type="submit" class="btn btn-primary btn-raised">
-                Login
+                Register
             </button>
         </div>
     </form>

@@ -3,11 +3,16 @@
 require_once __DIR__ . '/controller/Controller.php';
 require_once __DIR__ . '/controller/FeedController.php';
 require_once __DIR__ . '/controller/LoginController.php';
+require_once __DIR__ . '/controller/LogoutController.php';
+require_once __DIR__ . '/controller/ProfileController.php';
+require_once __DIR__ . '/controller/RegisterController.php';
 require_once __DIR__ . '/controller/SelectTeamController.php';
 require_once __DIR__ . '/controller/TwitterTrendsController.php';
+
 require_once __DIR__ . '/models/Session.php';
 require_once __DIR__ . '/models/TwitterAPIExchange.php';
 require_once __DIR__ . '/models/UserStorageSQL.php';
+
 require_once __DIR__ . '/view/View.php';
 require_once __DIR__ . '/view/PrivateView.php';
 
@@ -37,6 +42,19 @@ class Router {
                     $controller = new LoginController($this->view, $this->session, $this->userStorage);
                     $method = get_method();
                     $controller->$method();
+                    break;
+                case 'register':
+                    $controller = new RegisterController($this->view, $this->session, $this->userStorage);
+                    $method = get_method();
+                    $controller->$method();
+                    break;
+                case 'profile':
+                    $controller = new ProfileController($this->view, $this->session, $this->userStorage);
+                    $controller->get();
+                    break;
+                case 'logout':
+                    $controller = new LogoutController($this->view, $this->session, $this->userStorage);
+                    $controller->get();
                     break;
                 case 'select-team':
                     $controller = new SelectTeamController($this->view, $this->session, $this->userStorage);

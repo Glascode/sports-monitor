@@ -1,5 +1,5 @@
 <div class="d-flex">
-    <aside style="width: 268px; padding-top: 5rem; padding-left: 3rem;">
+    <aside class="pl-5" style="width: 268px;">
         <h6 class="text-uppercase">Feeds</h6>
         <ul>
             <li><a href="/feed">All</a></li>
