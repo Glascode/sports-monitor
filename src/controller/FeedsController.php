@@ -4,52 +4,62 @@ require_once __DIR__ . '/Controller.php';
 
 class FeedsController extends Controller {
 
-    public $feed;
+    public $feeds;
 
     public function get() {
         if (!$this->session->isUserLoggedIn()) {
             $this->redirect('/login');
         }
 
-        $get = $_GET;
+        $user_id = $this->session->getSessionValue('user_id');
+        $user = $this->userStorage->getUser($user_id);
 
-        $default_url = 'https://www.lequipe.fr/rss/actu_rss.xml';  // lequipe by default
-        if (key_exists('src', $get)) {
-            switch ($get['src']) {
-                case 'lequipe':
-                    $url = 'https://www.lequipe.fr/rss/actu_rss_Football.xml';
-                    break;
-                case 'bbc-sport':
-                    $url = 'http://feeds.bbci.co.uk/sport/football/rss.xml?edition=uk';
-                    break;
-                default:
-                    $url = $default_url;
-                    break;
+        $rss_feeds = $this->rssFeedsStorage->getRssFeedsByUserId($user['id']);
+
+        // TODO: Clean this mess
+        if ($rss_feeds) {
+
+            $default_url = 'https://www.lequipe.fr/rss/actu_rss.xml';  // lequipe by default
+
+            if (key_exists('src', $_GET)) {
+                switch ($_GET['src']) {
+                    case 'lequipe':
+                        $url = 'https://www.lequipe.fr/rss/actu_rss_Football.xml';
+                        break;
+                    case 'bbc-sport':
+                        $url = 'http://feeds.bbci.co.uk/sport/football/rss.xml?edition=uk';
+                        break;
+                    default:
+                        $url = $default_url;
+                        break;
+                }
+            } else {
+                $url = $default_url;
             }
-        } else {
-            $url = $default_url;
+
+            $this->feeds = self::getRssChannel($url);
         }
 
-        // TODO: Handle exception
+        $this->renderView('feeds');
+    }
 
+    public static function getRssChannel($url) {
         $curl = curl_init();
 
-        curl_setopt_array($curl, Array(
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => TRUE,
-            CURLOPT_ENCODING => 'UTF-8'
+        curl_setopt_array($curl, array(
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => 'UTF-8'
         ));
 
         $data = curl_exec($curl);
         curl_close($curl);
 
-        $xml_response = simplexml_load_string($data, null, LIBXML_NOCDATA);
-        $json_response = json_encode($xml_response);
-        $response_array = json_decode($json_response, TRUE);
+        $xmlResponse = simplexml_load_string($data, null, LIBXML_NOCDATA);
+        $jsonResponse = json_encode($xmlResponse);
+        $responseArray = json_decode($jsonResponse, true);
 
-        $this->feed = $response_array['channel'];
-
-        $this->renderView('feeds');
+        return $responseArray['channel'];
     }
 
     public function formatPublishedTime($time) {

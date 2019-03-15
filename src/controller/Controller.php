@@ -6,13 +6,15 @@ abstract class Controller {
 
     protected $session;
     protected $userStorage;
+    protected $rssFeedsStorage;
     protected $errors;
 
     public $menu;
 
-    public function __construct(Session $session, UserStorageSQL $userStorage) {
+    public function __construct(Session $session, UserStorageSQL $userStorage, RssFeedsStorageSQL $rssFeedsStorage) {
         $this->session = $session;
         $this->userStorage = $userStorage;
+        $this->rssFeedsStorage = $rssFeedsStorage;
         $this->generateMenu();
     }
 

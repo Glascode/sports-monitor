@@ -57,6 +57,28 @@
     box-shadow: none;
 }
 
+.checkbox label,
+.checkbox label:hover,
+.is-focused .checkbox label:hover {
+    color: currentColor;
+}
+
+.checkbox label input[type=checkbox]:checked + .checkbox-decorator .check,
+label.checkbox-inline input[type=checkbox]:checked + .checkbox-decorator .check {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.checkbox label input[type=checkbox]:checked + .checkbox-decorator .check:before,
+label.checkbox-inline input[type=checkbox]:checked + .checkbox-decorator .check:before {
+    color: var(--primary);
+}
+
+/* List group */
+.list-group-item {
+    padding: .5rem 1rem;
+}
+
 /* Flex */
 
 .flex-grow-0 {

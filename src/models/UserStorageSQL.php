@@ -79,6 +79,13 @@ class UserStorageSQL extends Model {
 
         $result = $this->database->execute();
 
+        $query = 'DELETE FROM users_rss_feeds
+                  WHERE user_id = :user_id';
+
+        $this->database->query($query);
+        $this->database->bind(':user_id', $userId);
+        $this->database->execute();
+
         return $result;
     }
 

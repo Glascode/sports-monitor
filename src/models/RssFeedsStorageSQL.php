@@ -13,9 +13,9 @@ class RssFeedsStorageSQL extends Model {
         $this->database->query($query);
         $this->database->bind(':id', $rssFeedId);
 
-        $user = $this->database->result();
+        $rss_feed = $this->database->result();
 
-        return $user;
+        return $rss_feed;
     }
 
     public function getAllRssFeeds() {
@@ -23,23 +23,37 @@ class RssFeedsStorageSQL extends Model {
 
         $this->database->query($query);
 
-        $users = $this->database->resultset();
+        $rss_feeds = $this->database->resultset();
 
-        return $users;
+        return $rss_feeds;
     }
 
     public function getRssFeedByName($rssFeedName) {
         $query = 'SELECT *
                   FROM rss_feeds
-                  WHERE $name = :name 
+                  WHERE name = :name 
                   LIMIT 1';
 
         $this->database->query($query);
         $this->database->bind(':name', $rssFeedName);
 
-        $user = $this->database->result();
+        $rss_feed = $this->database->result();
 
-        return $user;
+        return $rss_feed;
+    }
+
+    public function getRssFeedsByUserId($userId) {
+        $query = 'SELECT *
+                  FROM users_rss_feeds
+                  WHERE user_id = :user_id 
+                  LIMIT 1';
+
+        $this->database->query($query);
+        $this->database->bind(':user_id', $userId);
+
+        $rss_feeds = $this->database->result();
+
+        return $rss_feeds;
     }
 
     public function registerNewRssFeed($name, $url) {
@@ -63,6 +77,13 @@ class RssFeedsStorageSQL extends Model {
         $this->database->bind(':id', $rssFeedId);
 
         $result = $this->database->execute();
+
+        $query = 'DELETE FROM users_rss_feeds
+                  WHERE rss_feed_id = :rss_feed_id';
+
+        $this->database->query($query);
+        $this->database->bind(':rss_feed_id', $rssFeedId);
+        $this->database->execute();
 
         return $result;
     }

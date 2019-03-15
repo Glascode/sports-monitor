@@ -8,8 +8,9 @@ class TwitterTrendsController extends Controller {
 
     public function __construct(Session $session,
                                 UserStorageSQL $userStorage,
+                                RssFeedsStorageSQL $rssFeedsStorage,
                                 TwitterAPIExchange $twitterAPI) {
-        parent::__construct($session, $userStorage);
+        parent::__construct($session, $userStorage, $rssFeedsStorage);
         $this->twitterAPI = $twitterAPI;
     }
 
