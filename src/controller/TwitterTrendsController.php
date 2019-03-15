@@ -6,11 +6,10 @@ class TwitterTrendsController extends Controller {
 
     private $twitterAPI;
 
-    public function __construct(View $view,
-                                Session $session,
+    public function __construct(Session $session,
                                 UserStorageSQL $userStorage,
                                 TwitterAPIExchange $twitterAPI) {
-        parent::__construct($view, $session, $userStorage);
+        parent::__construct($session, $userStorage);
         $this->twitterAPI = $twitterAPI;
     }
 
@@ -25,7 +24,9 @@ class TwitterTrendsController extends Controller {
 
         $responseArray = json_decode($jsonResponse, true);
 
-        $this->view->makeTwitterTrendsPage($responseArray);
+        $this->tweets = $responseArray['statuses'];
+
+        $this->renderView('trends');
     }
 
 }

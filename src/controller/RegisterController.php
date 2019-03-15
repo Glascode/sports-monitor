@@ -5,15 +5,14 @@ require_once __DIR__ . '/Controller.php';
 class RegisterController extends Controller {
 
     public $message;
+    public $styleSheet = 'login';
 
     public function get() {
         if ($this->session->isUserLoggedIn()) {
             $this->redirect('/');
         }
 
-        $this->view->style = 'login';
-        $this->view->makePage('register');
-
+        $this->renderView('register');
     }
 
     public function post() {
@@ -41,8 +40,7 @@ class RegisterController extends Controller {
             }
         }
 
-        $this->view->style = 'login';
-        $this->view->makePage('register')->withMessage($this->message);
+        $this->renderView('register');
     }
 
     /**
@@ -60,6 +58,5 @@ class RegisterController extends Controller {
             $this->errors[] = USERNAME_EXISTS;
         }
     }
-
 
 }

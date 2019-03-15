@@ -5,14 +5,14 @@ require_once __DIR__ . '/Controller.php';
 class LoginController extends Controller {
 
     public $message;
+    public $styleSheet = 'login';
 
     public function get() {
         if ($this->session->isUserLoggedIn()) {
             $this->redirect('/');
         }
 
-        $this->view->style = 'login';
-        $this->view->makePage('login');
+        $this->renderView('login');
     }
 
     public function post() {
@@ -38,8 +38,7 @@ class LoginController extends Controller {
             }
         }
 
-        $this->view->style = 'login';
-        $this->view->makePage('login')->withMessage($this->message);
+        $this->renderView('login');
 
     }
 

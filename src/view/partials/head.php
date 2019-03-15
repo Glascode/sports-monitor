@@ -11,12 +11,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
 
-    <!-- Material Design for Bootstrap CSS -->
-    <link href="/css/bootstrap-material-design.min.css" rel="stylesheet">
-
-    <?php if (isset($this->style)): ?>
+    <?php if (isset($this->styleSheet)): ?>
         <!-- Specific page style -->
-        <link href="/css/<?= $this->style ?>.css" rel="stylesheet">
+        <link href="/css/<?= $this->styleSheet ?>.css" rel="stylesheet">
     <?php else: ?>
         <!-- Main style -->
         <link href="/css/main.css" rel="stylesheet">

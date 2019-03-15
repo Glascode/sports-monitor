@@ -2,10 +2,17 @@
 
 require_once __DIR__ . '/Controller.php';
 
-class FeedController extends Controller {
+class FeedsController extends Controller {
+
+    public $feed;
 
     public function get() {
+        if (!$this->session->isUserLoggedIn()) {
+            $this->redirect('/login');
+        }
+
         $get = $_GET;
+
         $default_url = 'https://www.lequipe.fr/rss/actu_rss.xml';  // lequipe by default
         if (key_exists('src', $get)) {
             switch ($get['src']) {
@@ -37,10 +44,24 @@ class FeedController extends Controller {
         curl_close($curl);
 
         $xml_response = simplexml_load_string($data, null, LIBXML_NOCDATA);
-        $json = json_encode($xml_response);
-        $array = json_decode($json, TRUE);
+        $json_response = json_encode($xml_response);
+        $response_array = json_decode($json_response, TRUE);
 
-        $this->view->makeFeedPage($array);
+        $this->feed = $response_array['channel'];
+
+        $this->renderView('feeds');
+    }
+
+    public function formatPublishedTime($time) {
+        date_default_timezone_set('Europe/Paris');
+        $published_time_interval = (time() - $time) / 60;
+
+        if ($published_time_interval > 60) {
+            $lapse = round($published_time_interval / 60);
+            return $lapse . ' hour' . ($lapse > 1 ? 's' : '') . ' ago';
+        }
+        $lapse = round($published_time_interval);
+        return $lapse . ' minute' . ($lapse > 1 ? 's' : '') . ' ago';
     }
 
 }

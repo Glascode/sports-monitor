@@ -10,7 +10,7 @@
     }
 </style>
 
-<div style="max-width: 800px; margin: auto;">
+<div class="container-md mx-auto">
     <h2 class="mb-5 google-sans">Twitter trends</h2>
     <div class="mb-4 text-secondary text-uppercase">Popular Tweets</div>
 

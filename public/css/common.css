@@ -1,6 +1,8 @@
 :root {
-    --primary: #1a73e8;
-    --primary-dark: #1666cb;
+    /*--primary: #1a73e8;*/
+    /*--primary-dark: #1666cb;*/
+    --primary: #b71c1c;
+    --primary-dark: #7f0000;
 }
 
 *, *::before, *::after {
@@ -19,7 +21,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding-top: 49px;
+    padding-top: 62px;
     font-family: Roboto, sans-serif;
     font-weight: 400;
     line-height: 1.5;
@@ -72,8 +74,8 @@ a:hover {
     margin: 0;
 }
 
-.header-nav-item:not(:first-child) {
-    margin-left: 1rem;
+.header-nav-item:not(:last-child) {
+    margin-right: 2rem;
 }
 
 .header a,
@@ -88,6 +90,7 @@ a:hover {
 .header-nav-link.btn {
     margin: 0;
     padding: .5rem 1rem;
+    font-size: inherit;
     letter-spacing: .25px;
 }
 
@@ -101,6 +104,10 @@ a:hover {
 
 .container-sm {
     max-width: 450px;
+}
+
+.container-md {
+    max-width: 768px;
 }
 
 .message {

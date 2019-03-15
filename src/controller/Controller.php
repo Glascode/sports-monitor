@@ -2,16 +2,41 @@
 
 abstract class Controller {
 
-    protected $view;
+    private $view;
+
     protected $session;
     protected $userStorage;
-
     protected $errors;
 
-    public function __construct(View $view, Session $session, UserStorageSQL $userStorage) {
-        $this->view = $view;
+    public $menu;
+
+    public function __construct(Session $session, UserStorageSQL $userStorage) {
         $this->session = $session;
         $this->userStorage = $userStorage;
+        $this->generateMenu();
+    }
+
+    public function generateMenu() {
+        $this->menu = [
+            'lequipe' => [
+                'title' => 'Feeds',
+                'url' => '/feeds'
+            ],
+            'trends' => [
+                'title' => 'Twitter trends',
+                'url' => '/trends'
+            ]
+        ];
+
+        $userId = $this->session->getSessionValue('user_id');
+        $user = $this->userStorage->getUser($userId);
+
+        $this->me = $user['username'];
+    }
+
+    protected function renderView($view) {
+        $this->view = strtolower($view);
+        include __DIR__ . '/../view/default.php';
     }
 
     protected function redirect($url) {
