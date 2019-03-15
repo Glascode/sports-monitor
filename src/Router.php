@@ -3,7 +3,7 @@
 require_once __DIR__ . '/controller/Controller.php';
 require_once __DIR__ . '/controller/DashboardController.php';
 require_once __DIR__ . '/controller/ExceptionNotFoundController.php';
-require_once __DIR__ . '/controller/FeedsController.php';
+require_once __DIR__ . '/controller/RssFeedsController.php';
 require_once __DIR__ . '/controller/IndexController.php';
 require_once __DIR__ . '/controller/LoginController.php';
 require_once __DIR__ . '/controller/LogoutController.php';
@@ -64,7 +64,7 @@ class Router {
                     $controller->get();
                     break;
                 case 'feeds':
-                    $controller = new FeedsController($this->session, $this->userStorage, $this->rssFeedsStorage);
+                    $controller = new RssFeedsController($this->session, $this->userStorage, $this->rssFeedsStorage);
                     $controller->get();
                     break;
                 case 'trends':

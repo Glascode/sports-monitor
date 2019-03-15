@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/Controller.php';
 
-class FeedsController extends Controller {
+class RssFeedsController extends Controller {
 
     public $feeds;
 
