@@ -16,7 +16,7 @@ abstract class Controller {
         $this->generateMenu();
     }
 
-    public function generateMenu() {
+    private function generateMenu() {
         $this->menu = [
             'lequipe' => [
                 'title' => 'Feeds',
@@ -32,6 +32,10 @@ abstract class Controller {
         $user = $this->userStorage->getUser($userId);
 
         $this->me = $user['username'];
+    }
+
+    public static function escape($html) {
+        return htmlspecialchars($html, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5, 'UTF-8');
     }
 
     protected function renderView($view) {

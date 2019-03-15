@@ -16,10 +16,11 @@ class LoginController extends Controller {
     }
 
     public function post() {
-        $post = $_POST;
+        $username = key_exists('username', $_POST) ? self::escape($_POST['username']) : null;
+        $password = key_exists('password', $_POST) ? self::escape($_POST['password']) : null;
 
-        $username = $post['username'];
-        $password = $post['password'];
+        $this->validateUsername($username);
+        $this->validatePassword($password);
 
         // Retrieve the user account information for the given username
         $user = $this->userStorage->getUserByUsername($username);

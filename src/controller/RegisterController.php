@@ -16,10 +16,8 @@ class RegisterController extends Controller {
     }
 
     public function post() {
-        $post = $_POST;
-
-        $username = $post['username'];
-        $password = $post['password'];
+        $username = key_exists('username', $_POST) ? self::escape($_POST['username']) : null;
+        $password = key_exists('password', $_POST) ? self::escape($_POST['password']) : null;
 
         // Validate username and password
         $this->validateNewUser($username, $password);
@@ -48,8 +46,8 @@ class RegisterController extends Controller {
      * special characters.
      */
     public function validateNewUser($username, $password) {
-        $this->validatePassword($password);
         $this->validateUsername($username);
+        $this->validatePassword($password);
 
         $usernameSearchResults = $this->userStorage->isUsernameAvailable($username);
 
