@@ -6,17 +6,18 @@ class TwitterTrendsController extends Controller {
 
     private $twitterAPI;
 
-    public function __construct(View $view,
-                                Session $session,
+    public function __construct(Session $session,
                                 UserStorageSQL $userStorage,
+                                RssFeedsStorageSQL $rssFeedsStorage,
                                 TwitterAPIExchange $twitterAPI) {
-        parent::__construct($view, $session, $userStorage);
+        parent::__construct($session, $userStorage, $rssFeedsStorage);
         $this->twitterAPI = $twitterAPI;
     }
 
     public function get() {
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
         $getfield = '?q=%23football&result_type=popular&lang=en&tweet_mode=extended';
+
         $jsonResponse = $this->twitterAPI
             ->setGetfield($getfield)
             ->buildOauth($url, 'GET')
@@ -24,7 +25,9 @@ class TwitterTrendsController extends Controller {
 
         $responseArray = json_decode($jsonResponse, true);
 
-        $this->view->makeTwitterTrendsPage($responseArray);
+        $this->tweets = $responseArray['statuses'];
+
+        $this->renderView('trends');
     }
 
 }

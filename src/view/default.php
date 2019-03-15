@@ -5,8 +5,8 @@
 <body>
 <?php include __DIR__ . '/partials/header.php'; ?>
 
-<main class="content">
-    <?php include __DIR__ . '/views/' . $this->page . '.view.php'; ?>
+<main>
+    <?php include __DIR__ . '/views/' . $this->view . '.view.php'; ?>
 </main>
 
 <?php include __DIR__ . '/partials/footer.html'; ?>

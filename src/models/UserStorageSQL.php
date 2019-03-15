@@ -42,14 +42,13 @@ class UserStorageSQL extends Model {
         return $user;
     }
 
-    public function registerNewUser($username, $password, $role) {
-        $query = 'INSERT INTO users (username, password, email, role)
-                  VALUES (:username, :password, :role)';
+    public function registerNewUser($username, $password) {
+        $query = 'INSERT INTO users (username, password)
+                  VALUES (:username, :password)';
 
         $this->database->query($query);
         $this->database->bind(':username', $username);
         $this->database->bind(':password', $password);
-        $this->database->bind(':role', $role);
 
         $result = $this->database->execute();
 
@@ -79,6 +78,13 @@ class UserStorageSQL extends Model {
         $this->database->bind(':id', $userId);
 
         $result = $this->database->execute();
+
+        $query = 'DELETE FROM users_rss_feeds
+                  WHERE user_id = :user_id';
+
+        $this->database->query($query);
+        $this->database->bind(':user_id', $userId);
+        $this->database->execute();
 
         return $result;
     }
