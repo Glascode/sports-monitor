@@ -22,12 +22,16 @@ body {
     font-family: Roboto, sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    background-color: #fff;
+    background-color: var(--primary);
 }
 
 main {
     flex: 1 0 auto;
     padding: 1rem;
+
+    background-color: #fff;
+
+    border-radius: 10px 10px 0 0;
 }
 
 a {
@@ -38,29 +42,34 @@ a:hover {
     color: var(--primary-dark);
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Google Sans', Roboto, sans-serif;
+}
+
 /* Header */
 
 .header {
-    position: fixed;
     top: 0;
     width: 100%;
     color: #fff;
     background-color: var(--primary);
-    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
     z-index: 3;
 }
 
 .header-inner {
     display: flex;
     align-items: center;
-    padding: .5rem 2rem;
+    padding: 1rem 2rem;
     font-family: 'Google Sans', Roboto, sans-serif;
+}
+
+.header-inner h4 {
+    flex-shrink: 0;
 }
 
 .header-nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
 }
 
@@ -70,6 +79,10 @@ a:hover {
 
 .header-nav-item:not(:first-child) {
     margin-left: 1rem;
+}
+
+.header-nav-item:last-child {
+    margin-left: auto;
 }
 
 .header a,

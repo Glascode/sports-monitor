@@ -18,11 +18,15 @@ class View {
             'trends' => [
                 'title' => 'Twitter trends',
                 'url' => '/trends'
+            ],
+            'dashboard' => [
+                'title' => 'Dashboard',
+                'url' => '/dashboard'
+            ],
+            'login' => [
+                'title' => 'Login',
+                'url' => '/login'
             ]
-        ];
-        $this->menuProfile = [
-            'title' => 'Login',
-            'url' => '/login'
         ];
     }
 
@@ -44,7 +48,8 @@ class View {
         $this->feed = $responseArray['channel'];
     }
 
-    public function makeTwitterTrendsPage(array $responseArray) {
+    public function makeTwitterTrendsPage(array 
+    $responseArray) {
         $this->page = 'trends';
         $this->tweets = $responseArray['statuses'];
     }

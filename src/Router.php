@@ -5,6 +5,7 @@ require_once __DIR__ . '/controller/FeedController.php';
 require_once __DIR__ . '/controller/LoginController.php';
 require_once __DIR__ . '/controller/SelectTeamController.php';
 require_once __DIR__ . '/controller/TwitterTrendsController.php';
+require_once __DIR__ . '/controller/DashboardController.php';
 require_once __DIR__ . '/models/Session.php';
 require_once __DIR__ . '/models/TwitterAPIExchange.php';
 require_once __DIR__ . '/models/UserStorageSQL.php';
@@ -56,6 +57,10 @@ class Router {
                     );
                     $controller = new TwitterTrendsController($this->view,
                         $this->session, $this->userStorage, new TwitterAPIExchange($settings));
+                    $controller->get();
+                    break;
+                case 'dashboard':
+                    $controller = new DashboardController($this->view, $this->session, $this->userStorage);
                     $controller->get();
                     break;
                 default:

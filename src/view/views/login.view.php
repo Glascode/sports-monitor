@@ -1,5 +1,6 @@
 <div class="frame m-auto p-5">
-    <h1 class="text-center">Sign in</h1>
+    <h1 class="text-center">Sports Monitor</h1>
+    <h3 class="text-center">Sign in</h2>
 
     <div> <!-- form -->
         <div class="form-group">
