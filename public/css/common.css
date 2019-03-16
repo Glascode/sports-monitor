@@ -29,6 +29,7 @@ main {
     padding: 3rem 1rem 1rem;
     background-color: #fff;
     border-radius: 10px 10px 0 0;
+    box-shadow: 0 0 20px rgba(0,0,0,.5);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -50,7 +51,6 @@ a:hover {
     width: 100%;
     color: #fff;
     background-color: var(--primary);
-    z-index: 3;
 }
 
 .header-inner {

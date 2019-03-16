@@ -20,13 +20,9 @@ abstract class Controller {
 
     private function generateMenu() {
         $this->menu = [
-            'lequipe' => [
-                'title' => 'Feeds',
-                'url' => '/feeds'
-            ],
-            'trends' => [
-                'title' => 'Twitter trends',
-                'url' => '/trends'
+            'dashboard' => [
+                'title' => 'Dashboard',
+                'url' => '/dashboard'
             ]
         ];
 
