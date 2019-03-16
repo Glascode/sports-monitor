@@ -1,4 +1,4 @@
-<h2 class="mb-5">Dashboard</h2>
+<h1 class="mb-5 text-center">Dashboard</h1>
 
 <div class="wrapper d-flex align-items-center">
 	<div class="d-flex justify-content-around w-100">

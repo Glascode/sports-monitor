@@ -7,7 +7,7 @@ A sports news trends viewing web app.
 
 ### Prerequisites
 
-It is assumed you already know how to use LAMP environment.
+It is assumed you already know how to use a LAMP environment.
 
 ### Installing
 
