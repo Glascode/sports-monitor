@@ -4,10 +4,10 @@
         <div class="list-group">
             <a class="list-group-item list-group-item-action"
                href="/feeds">All</a>
-            <a class="list-group-item list-group-item-action"
-               href="?src=bbc-sport">BBC Sport</a>
-            <a class="list-group-item list-group-item-action"
-               href="?src=lequipe">L'Équipe</a>
+            <?php foreach ($this->rssFeedsStorage->getAllUserRssFeeds($this->userId) as $feed): ?>
+                <a class="list-group-item list-group-item-action"
+                   href="?src=<?= $feed['src'] ?>"><?= $feed['name'] ?></a>
+            <?php endforeach; ?>
         </div>
     </aside>
 

@@ -1,4 +1,4 @@
-<div class="container-md m-auto">
+<div class="container-sm m-auto">
     <h1 class="mb-5"><?= $this->pageTitle ?></h1>
 
     <div>
@@ -6,17 +6,23 @@
 
         <form onChange="this.submit()" method="POST">
             <?php foreach ($this->allRssFeeds as $rssFeed): ?>
-                <div class="checkbox">
-                    <span><?= $rssFeed['name'] ?></span>
-                    <?php if (!empty($this->rssFeedsStorage->getUserRssFeed($this->userId, $rssFeed['id']))): ?>
-                        <button class="btn btn-primary" name="unfollow"
-                                value="<?= $rssFeed['id'] ?>"
-                                type="submit">Unfollow</button>
-                    <?php else: ?>
-                        <button class="btn btn-primary" name="follow"
-                                value="<?= $rssFeed['id'] ?>"
-                                type="submit">Follow</button>
-                    <?php endif; ?>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="m-0"><?= $rssFeed['name'] ?></h5>
+                            <?php if (!empty($this->rssFeedsStorage->getUserRssFeed($this->userId, $rssFeed['id']))): ?>
+                                <button class="btn btn-primary" name="unfollow"
+                                        value="<?= $rssFeed['id'] ?>"
+                                        type="submit">Unfollow
+                                </button>
+                            <?php else: ?>
+                                <button class="btn btn-primary" name="follow"
+                                        value="<?= $rssFeed['id'] ?>"
+                                        type="submit">Follow
+                                </button>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </form>

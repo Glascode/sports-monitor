@@ -58,20 +58,20 @@ class RssFeedsStorageSQL extends Model {
         return $rss_feeds;
     }
 
-    public function getRssFeedsByUserId($userId) {
+    public function getAllUserRssFeeds($userId) {
         $query = 'SELECT *
                   FROM rss_feeds
                   WHERE id
-                  IN (SELECT user_id
+                  IN (SELECT rss_feed_id
                       FROM users_rss_feeds
                       WHERE user_id = :user_id)';
 
         $this->database->query($query);
         $this->database->bind(':user_id', $userId);
 
-        $rss_feeds = $this->database->result();
+        $userRssFeeds = $this->database->resultset();
 
-        return $rss_feeds;
+        return $userRssFeeds;
     }
 
     public function registerNewRssFeed($name, $url) {

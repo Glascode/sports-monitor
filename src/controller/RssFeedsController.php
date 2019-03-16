@@ -4,20 +4,21 @@ require_once __DIR__ . '/Controller.php';
 
 class RssFeedsController extends Controller {
 
-    public $feeds;
+    public $userId;
+    public $userRssFeeds;
+    public $rssFeedsArray;
 
     public function get() {
         if (!$this->session->isUserLoggedIn()) {
             $this->redirect('/login');
         }
 
-        $user_id = $this->session->getSessionValue('user_id');
-        $user = $this->userStorage->getUser($user_id);
+        $this->userId = $this->session->getSessionValue('user_id');
+        $user = $this->userStorage->getUser($this->userId);
 
-        $rss_feeds = $this->rssFeedsStorage->getRssFeedsByUserId($user['id']);
+        $this->userRssFeeds = $this->rssFeedsStorage->getAllUserRssFeeds($this->userId);
 
-        // TODO: Clean this mess
-        if ($rss_feeds) {
+        if (!empty($this->userRssFeeds)) {
 
             $default_url = 'https://www.lequipe.fr/rss/actu_rss.xml';  // lequipe by default
 
@@ -37,7 +38,7 @@ class RssFeedsController extends Controller {
                 $url = $default_url;
             }
 
-            $this->feeds = self::getRssChannel($url);
+            $this->rssFeedsArray[] = self::getRssChannel($url);
         }
 
         $this->renderView('feeds');
