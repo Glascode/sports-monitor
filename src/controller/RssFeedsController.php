@@ -1,12 +1,12 @@
 <?php
 
 require_once __DIR__ . '/Controller.php';
+require_once __DIR__ . '/../models/WordsOccurrencesCounter.php';
 
 class RssFeedsController extends Controller {
 
     public $userId;
     public $userRssFeeds;
-    public $rssFeedsArray;
 
     public function get() {
         if (!$this->session->isUserLoggedIn()) {
@@ -14,37 +14,24 @@ class RssFeedsController extends Controller {
         }
 
         $this->userId = $this->session->getSessionValue('user_id');
-        $user = $this->userStorage->getUser($this->userId);
 
         $this->userRssFeeds = $this->rssFeedsStorage->getAllUserRssFeeds($this->userId);
 
-        if (!empty($this->userRssFeeds)) {
+        $wordsOccurrencesCounter = new WordsOccurrencesCounter();
 
-            $default_url = 'https://www.lequipe.fr/rss/actu_rss.xml';  // lequipe by default
-
-            if (key_exists('src', $_GET)) {
-                switch ($_GET['src']) {
-                    case 'lequipe':
-                        $url = 'https://www.lequipe.fr/rss/actu_rss_Football.xml';
-                        break;
-                    case 'bbc-sport':
-                        $url = 'http://feeds.bbci.co.uk/sport/football/rss.xml?edition=uk';
-                        break;
-                    default:
-                        $url = $default_url;
-                        break;
-                }
-            } else {
-                $url = $default_url;
+        foreach ($this->userRssFeeds as $userRssFeed) {
+            $rssFeed = $this->getRssChannel($userRssFeed['url']);
+            foreach ($rssFeed['item'] as $item) {
+                $wordsOccurrencesCounter->addWordsFromText($item['description']);
             }
-
-            $this->rssFeedsArray[] = self::getRssChannel($url);
         }
+
+        var_dump($wordsOccurrencesCounter->getWordOccurrences());
 
         $this->renderView('feeds');
     }
 
-    public static function getRssChannel($url) {
+    public function getRssChannel($url) {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
