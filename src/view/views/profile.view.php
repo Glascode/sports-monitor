@@ -11,7 +11,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <h5 class="m-0"><?= $rssFeed['name'] ?></h5>
                             <?php if (!empty($this->rssFeedsStorage->getUserRssFeed($this->userId, $rssFeed['id']))): ?>
-                                <button class="btn btn-primary" name="unfollow"
+                                <button class="btn btn-primary js-btn-following" name="unfollow"
                                         value="<?= $rssFeed['id'] ?>"
                                         type="submit">Following
                                 </button>

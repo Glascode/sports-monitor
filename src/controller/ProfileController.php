@@ -8,6 +8,8 @@ class ProfileController extends Controller {
     public $userId;
     public $pageTitle;
 
+    public $script = 'profile';
+
     public function get() {
         if (!$this->session->isUserLoggedIn()) {
             $this->redirect('/login');
