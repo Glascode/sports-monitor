@@ -7,7 +7,6 @@ class DashboardController extends Controller {
     public $styleSheet = 'dashboard';
     public $script = 'dashboard';
 
-    public $userId;
     public $wordsOccurrences;
 
     public function get() {
@@ -15,10 +14,9 @@ class DashboardController extends Controller {
             $this->redirect('/login');
         }
 
-        $this->userId = $this->session->getSessionValue('user_id');
+        $wordsOccurrencesCounter = new WordsOccurrencesCounter();
         $allRssFeeds = $this->rssFeedsStorage->getAllRssFeeds();
 
-        $wordsOccurrencesCounter = new WordsOccurrencesCounter();
 
         foreach ($allRssFeeds as $rssFeed) {
             $rssFeed = RssFeedsController::getRssChannel($rssFeed['url']);

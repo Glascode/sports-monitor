@@ -9,7 +9,7 @@ class WordsOccurrencesCounter {
     }
 
     public function addWordsFromText($text) {
-        $text = $this->removeCommonWords(strip_tags($text));
+        $text = $this->removeCommonWords(strip_tags(strtolower($text)));
         $rssDescriptionArray = explode(' ', $text);
         foreach ($rssDescriptionArray as $word) {
             if (!key_exists($word, $this->wordsOccurrences)) {
