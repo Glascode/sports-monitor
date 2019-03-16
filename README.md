@@ -18,5 +18,5 @@ corresponding file.
 
 - **[Romain Garcia](https://github.com/garcia-dev)** - _Front-end development_
 - **[Maël Querré](https://github.com/Glascode)** - _Back-end development_
-- Christina Williamson - _General development_
-- Thomass Montaine - _General development_
+- **Christina Williamson** - _General development_
+- **Thomass Montaine** - _General development_
