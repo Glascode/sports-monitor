@@ -7,24 +7,29 @@ class DashboardController extends Controller {
     public $styleSheet = 'dashboard';
     public $script = 'dashboard';
 
+    public $userId;
+    public $wordsOccurrences;
+
     public function get() {
         if (!$this->session->isUserLoggedIn()) {
             $this->redirect('/login');
         }
 
+        $this->userId = $this->session->getSessionValue('user_id');
+        $allRssFeeds = $this->rssFeedsStorage->getAllRssFeeds();
+
+        $wordsOccurrencesCounter = new WordsOccurrencesCounter();
+
+        foreach ($allRssFeeds as $rssFeed) {
+            $rssFeed = RssFeedsController::getRssChannel($rssFeed['url']);
+            foreach ($rssFeed['item'] as $item) {
+                $wordsOccurrencesCounter->addWordsFromText($item['description']);
+            }
+        }
+
+        $this->wordsOccurrences = $wordsOccurrencesCounter->getSortedWordsOccurrences();
+
         $this->renderView('dashboard');
     }
-
-    public function generateTagCloud($array) {
-        $tagArray = $array;
-		$res = '';
-		shuffle($tagArray);
-		
-		foreach($tagArray as $tag) {
-            $res .= "<a style=\"font-size: " . $tag['weight'] . "px\"; href=\"" . $tag['url'] . "\">" . $tag['tagname'] . "</a>";
-        }
-        
-		return $res;
-	}
 
 }

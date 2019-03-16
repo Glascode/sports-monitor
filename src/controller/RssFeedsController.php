@@ -17,21 +17,10 @@ class RssFeedsController extends Controller {
 
         $this->userRssFeeds = $this->rssFeedsStorage->getAllUserRssFeeds($this->userId);
 
-        $wordsOccurrencesCounter = new WordsOccurrencesCounter();
-
-        foreach ($this->userRssFeeds as $userRssFeed) {
-            $rssFeed = $this->getRssChannel($userRssFeed['url']);
-            foreach ($rssFeed['item'] as $item) {
-                $wordsOccurrencesCounter->addWordsFromText($item['description']);
-            }
-        }
-
-        var_dump($wordsOccurrencesCounter->getWordOccurrences());
-
         $this->renderView('feeds');
     }
 
-    public function getRssChannel($url) {
+    public static function getRssChannel($url) {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(

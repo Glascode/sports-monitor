@@ -5,4 +5,4 @@ $(document).ready(function (){
 		$parent = $(this).parent().parent();
 		$parent.find('.form-group').addClass('is-focused');
 	})
-})
+});
