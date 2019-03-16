@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS `sports_monitor`;
+
+USE `sports_monitor`;
+
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users`
