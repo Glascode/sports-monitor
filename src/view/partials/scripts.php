@@ -18,10 +18,8 @@
     });
 
     <?php if (isset($this->script) && $this->script == 'dashboard'): ?>
-        $('.input-group.date').datepicker({
-            orientation: "bottom auto",
-            todayHighlight: true
-        });
+        $.fn.datepicker.defaults.orientation = "bottom auto";
+        $.fn.datepicker.defaults.todayHighlight = "true";
 
         $('#tag-cloud-date-1').change(function() {
             generateTagCloud($(this).val(), 'tag-cloud-1');
@@ -32,8 +30,6 @@
         });
 
         function generateTagCloud(date, id_div) {
-            console.log('Tag cloud generation');
-
             var oReq = new XMLHttpRequest();
 
             oReq.onload = function() {
