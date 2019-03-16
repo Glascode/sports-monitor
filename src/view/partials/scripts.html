@@ -6,8 +6,14 @@
         integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
         crossorigin="anonymous"></script>
 <script src="/js/bootstrap-material-design.min.js"></script>
+
+<script src="/js/bootstrap-datepicker.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('body').bootstrapMaterialDesign();
+    });
+    $('.input-group.date').datepicker({
+        todayHighlight: true
     });
 </script>
