@@ -15,6 +15,10 @@ class TwitterTrendsController extends Controller {
     }
 
     public function get() {
+        if (!$this->session->isUserLoggedIn()) {
+            $this->redirect('/login');
+        }
+
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
         $getfield = '?q=%23football&result_type=popular&lang=en&tweet_mode=extended';
 

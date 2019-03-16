@@ -1,0 +1,90 @@
+@import 'main.css';
+@import 'bootstrap-datepicker3.standalone.min.css';
+
+main {
+	display: flex;
+	flex-direction: column;
+}
+
+.wrapper {
+	flex: 1;
+}
+
+.tag-cloud-container {
+	width: 500px;
+    border: 1px solid #ccc;
+	border-radius: .5rem;
+}
+
+.tag-cloud {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	flex-wrap: wrap
+}
+
+.tag-cloud a {
+	margin: .5rem;
+}
+
+.input-group.date {
+	width: auto;
+	margin-bottom: 2rem;
+}
+
+.form-group {
+	display: flex;
+	align-items: center;
+}
+
+.form-group label:last-child {
+	margin-bottom: 0;
+	margin-left: .5rem;
+	cursor: pointer;
+}
+
+.form-control {
+	width: 5.3rem;
+}
+
+.dropdown-menu {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.is-focused svg {
+	fill: var(--primary);
+}
+
+.datepicker .datepicker-switch {
+	font-family: 'Google Sans', Roboto, sans-serif;
+	color: var(--primary);
+}
+
+.datepicker table {
+	border-collapse: separate;
+}
+
+.datepicker td, .datepicker td.today, .datepicker span {
+	border-radius: 50% !important;
+}
+
+.datepicker span {
+	width: 45px !important;
+	height: 45px !important;
+	line-height: 45px !important;
+}
+
+.datepicker td.today, span.focused {
+	background-color: transparent !important;
+	border: 1px solid #ccc !important;
+}
+
+.datepicker td.active, .datepicker span.active {
+	background-color: var(--primary) !important;
+	border-color: var(--primary) !important;
+}
+
+.tag-cloud {
+	border-radius: 50%;
+}
