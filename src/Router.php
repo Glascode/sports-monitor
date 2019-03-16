@@ -9,7 +9,6 @@ require_once __DIR__ . '/controller/LoginController.php';
 require_once __DIR__ . '/controller/LogoutController.php';
 require_once __DIR__ . '/controller/ProfileController.php';
 require_once __DIR__ . '/controller/RegisterController.php';
-require_once __DIR__ . '/controller/SelectTeamController.php';
 require_once __DIR__ . '/controller/TwitterTrendsController.php';
 
 require_once __DIR__ . '/models/Session.php';
@@ -65,11 +64,6 @@ class Router {
                     break;
                 case 'logout':
                     $controller = new LogoutController($this->session, $this->userStorage, $this->rssFeedsStorage);
-                    $controller->get();
-                    break;
-                case 'select-team':
-                    $controller = new SelectTeamController($this->session, $this->userStorage, $this->rssFeedsStorage);
-                    $method = get_method();
                     $controller->get();
                     break;
                 case 'feeds':
