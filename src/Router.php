@@ -82,6 +82,9 @@ class Router {
                     );
                     $controller->get();
                     break;
+                case 'generate_tag_cloud.php':
+                    include __DIR__ . '/models/generate_tag_cloud.php';
+                    break;
                 default:
                     $controller = new ExceptionNotFoundController($this->session, $this->userStorage, $this->rssFeedsStorage);
                     $controller->get();

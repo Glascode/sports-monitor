@@ -32,8 +32,15 @@ main {
 	margin-bottom: 2rem;
 }
 
-.input-group svg {
-	margin-top: .8rem;
+.form-group {
+	display: flex;
+	align-items: center;
+}
+
+.form-group label:last-child {
+	margin-bottom: 0;
+	margin-left: .5rem;
+	cursor: pointer;
 }
 
 .form-control {
@@ -45,7 +52,7 @@ main {
 	transform: scale(1);
 }
 
-.is-focused + .input-group-addon svg {
+.is-focused svg {
 	fill: var(--primary);
 }
 

@@ -20,8 +20,6 @@ class ProfileController extends Controller {
 
         $this->pageTitle = $user['username'];
         $this->renderView('profile');
-
-        var_dump($_GET);
     }
 
     public function post() {

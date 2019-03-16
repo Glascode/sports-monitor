@@ -11,7 +11,7 @@
 
 <?php include __DIR__ . '/partials/footer.html'; ?>
 
-<?php include __DIR__ . '/partials/scripts.html'; ?>
+<?php include __DIR__ . '/partials/scripts.php'; ?>
 </body>
 
 </html>
