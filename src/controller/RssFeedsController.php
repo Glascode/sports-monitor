@@ -6,6 +6,7 @@ require_once __DIR__ . '/../models/WordsOccurrencesCounter.php';
 class RssFeedsController extends Controller {
 
     public $userId;
+    public $userRssFeed;
     public $userRssFeeds;
 
     public function get() {
@@ -15,7 +16,11 @@ class RssFeedsController extends Controller {
 
         $this->userId = $this->session->getSessionValue('user_id');
 
-        $this->userRssFeeds = $this->rssFeedsStorage->getAllUserRssFeeds($this->userId);
+        if (key_exists('src', $_GET)) {
+            $this->userRssFeed = $this->rssFeedsStorage->getRssFeedBySrc($_GET['src']);
+        } else {
+            $this->userRssFeeds = $this->rssFeedsStorage->getAllUserRssFeeds($this->userId);
+        }
 
         $this->renderView('feeds');
     }

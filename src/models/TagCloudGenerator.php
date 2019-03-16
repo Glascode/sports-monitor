@@ -55,7 +55,7 @@ class TagCloudGenerator {
 
             $style .= '"';
 
-            $res .= "<a " . $style . "href=\"#$tag\">" . $tag . "</a>";
+            $res .= "<a " . $style . "href=\"/feeds?tag=$tag\">" . $tag . "</a>";
         }
 
         echo $res;

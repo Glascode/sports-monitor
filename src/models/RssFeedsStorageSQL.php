@@ -18,14 +18,14 @@ class RssFeedsStorageSQL extends Model {
         return $rss_feed;
     }
 
-    public function getRssFeedByName($rssFeedName) {
+    public function getRssFeedBySrc($rssFeedSrc) {
         $query = 'SELECT *
                   FROM rss_feeds
-                  WHERE name = :name 
+                  WHERE src = :src 
                   LIMIT 1';
 
         $this->database->query($query);
-        $this->database->bind(':name', $rssFeedName);
+        $this->database->bind(':src', $rssFeedSrc);
 
         $rss_feed = $this->database->result();
 
