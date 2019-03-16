@@ -20,9 +20,9 @@ class TagCloudGenerator {
         }
 
         $this->wordsOccurrencesCounter = new WordsOccurrencesCounter();
-        $this->wordsOccurrencesCounter->addWordsFromText($this->getRawRssFeeds());
-        $this->wordsOccurrencesCounter->addWordsFromText($this->getRawTweets('football'));
-        $this->wordsOccurrencesCounter->addWordsFromText($this->getRawTweets('soccer'));
+        $this->wordsOccurrencesCounter->addWordsFromText($this->getRawRssFeeds($date));
+        $this->wordsOccurrencesCounter->addWordsFromText($this->getRawTweets('football', $date));
+        $this->wordsOccurrencesCounter->addWordsFromText($this->getRawTweets('soccer', $date));
 
         $wordsOccurrencesArray = array_slice($this->wordsOccurrencesCounter->getSortedWordsOccurrences(), 0, 30);
 
@@ -58,24 +58,33 @@ class TagCloudGenerator {
             $res .= "<a " . $style . "href=\"/feeds?tag=$tag\">" . $tag . "</a>";
         }
 
+        if (empty($res)) {
+            $res .= '<p class="text-danger">There\'s no data for this selected date</p>';
+        }
+
         echo $res;
     }
 
-    private function getRawRssFeeds() {
+    private function getRawRssFeeds($givenDate) {
         $rawRssFeeds = '';
         $allRssFeeds = $this->rssFeedsStorage->getAllRssFeeds();
 
         foreach ($allRssFeeds as $rssFeed) {
             $rssFeed = RssFeedsController::getRssChannel($rssFeed['url']);
             foreach ($rssFeed['item'] as $item) {
-                $rawRssFeeds .= $item['description'];
+                $dateParts = explode(' ', $item['pubDate']);
+                $publicationDate = date('m/d/Y', strtotime($dateParts[0] . ' ' . $dateParts[1] . ' ' . $dateParts[2]));
+
+                if ($publicationDate === $givenDate) {
+                    $rawRssFeeds .= $item['description'];
+                }
             }
         }
 
         return $rawRssFeeds;
     }
 
-    private function getRawTweets($hashtag) {
+    private function getRawTweets($hashtag, $givenDate) {
         $rawTweets = '';
 
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
@@ -93,7 +102,12 @@ class TagCloudGenerator {
         $responseArray = json_decode($jsonResponse, true);
 
         foreach ($responseArray['statuses'] as $tweet) {
-            $rawTweets .= $tweet['full_text'];
+            $dateParts = explode(' ', $tweet['created_at']);
+            $publicationDate = date('m/d/Y', strtotime($dateParts[1] . ' ' . $dateParts[2] . ' ' . $dateParts[5]));
+
+            if ($publicationDate === $givenDate) {
+                $rawTweets .= preg_replace('/\b((https?|ftp|file):\/\/|www\.)[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i', ' ', preg_replace('/#\S+[ \t]*/', '', $tweet['full_text']));
+            }
         };
 
         return $rawTweets;
