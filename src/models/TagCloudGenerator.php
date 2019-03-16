@@ -43,11 +43,11 @@ class TagCloudGenerator {
 
             if ($occurrence <= $maxOccurrence * 0.2) {
                 $style .= 'font-size: 6pt;';
-            } elseif ($occurrence <= $maxOccurrence * 0.4) {
+            } else if ($occurrence <= $maxOccurrence * 0.4) {
                 $style .= 'font-size: 12pt; font-weight: 300';
-            } elseif ($occurrence <= $maxOccurrence * 0.6) {
+            } else if ($occurrence <= $maxOccurrence * 0.6) {
                 $style .= 'font-size: 18pt; font-weight: 500';
-            } elseif ($occurrence <= $maxOccurrence * 0.8) {
+            } else if ($occurrence <= $maxOccurrence * 0.8) {
                 $style .= 'font-size: 24pt; font-weight: 700';
             } else {
                 $style .= 'font-size: 30pt; font-weight: 900';
