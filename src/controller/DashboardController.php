@@ -8,9 +8,9 @@ class DashboardController extends Controller {
     public $script = 'dashboard';
 
     public function get() {
-        /*if (!$this->session->isUserLoggedIn()) {
+        if (!$this->session->isUserLoggedIn()) {
             $this->redirect('/login');
-        }*/
+        }
 
         $this->renderView('dashboard');
     }

@@ -24,7 +24,7 @@ main {
 }
 
 .tag-cloud a {
-	margin: .5rem;
+	margin: 1px;
 }
 
 .input-group.date {
@@ -83,8 +83,4 @@ main {
 .datepicker td.active, .datepicker span.active {
 	background-color: var(--primary) !important;
 	border-color: var(--primary) !important;
-}
-
-.tag-cloud {
-	border-radius: 50%;
 }
