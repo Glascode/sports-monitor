@@ -120,10 +120,16 @@ a:hover {
     white-space: pre-wrap;
 }
 
-.rss-item-img {
+.rss-item-img,
+.rss-item-description img {
     width: 160px;
     height: 90px;
     border-radius: 4px;
+}
+
+.rss-item-description img {
+    margin-right: 1.5rem;
+    float: left;
 }
 
 .icon-sprite {

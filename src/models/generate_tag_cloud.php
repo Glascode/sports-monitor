@@ -55,4 +55,3 @@ foreach($tags as $tag) {
 }
         
 echo $res;
-?>

@@ -1,19 +1,28 @@
-<div class="container-md m-auto">
+<div class="container-sm m-auto">
     <h1 class="mb-5"><?= $this->pageTitle ?></h1>
 
     <div>
-        <h2>Your RSS feeds</h2>
-        <?php if (empty($this->rssFeeds)): ?>
-            <p>You're not subscribed to any RSS feeds.</p>
-        <?php endif; ?>
+        <h2 class="mb-4">Subscribe to RSS feeds</h2>
 
-        <form onChange="this.submit()">
-            <?php foreach ($this->availableRssFeeds as $rssFeed): ?>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="rssFeedId" value="<?= $rssFeed['id'] ?>">
-                        <?= $rssFeed['name'] ?>
-                    </label>
+        <form onChange="this.submit()" method="POST">
+            <?php foreach ($this->allRssFeeds as $rssFeed): ?>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="m-0"><?= $rssFeed['name'] ?></h5>
+                            <?php if (!empty($this->rssFeedsStorage->getUserRssFeed($this->userId, $rssFeed['id']))): ?>
+                                <button class="btn btn-primary" name="unfollow"
+                                        value="<?= $rssFeed['id'] ?>"
+                                        type="submit">Following
+                                </button>
+                            <?php else: ?>
+                                <button class="btn btn-primary" name="follow"
+                                        value="<?= $rssFeed['id'] ?>"
+                                        type="submit">Follow
+                                </button>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </form>

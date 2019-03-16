@@ -15,6 +15,7 @@
     <div class="mb-4 text-secondary text-uppercase">Popular Tweets</div>
 
     <div>
+        <?php var_dump($this->tweets); ?>
         <?php foreach ($this->tweets as $tweet): ?>
             <a class="card tweet-card mb-4 p-3" target="_blank">
                 <div class="mb-1">
